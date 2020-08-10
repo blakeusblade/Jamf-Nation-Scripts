@@ -94,7 +94,7 @@
 #
 # HISTORY
 #
-#   Version: 1.0
+#   Version: 2.0
 #
 #   - Created by Nick Amundsen on July 22, 2011
 #   - Modified by Blake Suggett on July 24, 2018
