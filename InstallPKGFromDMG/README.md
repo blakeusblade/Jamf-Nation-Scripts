@@ -9,11 +9,11 @@
 
 ### installPKGfromDMG_v2.0.sh
 * This has refined code to allow greater flexibilty when dealing with expected failures.
-	Capabilities - 
-		Passed parameter 4 = DMG filename
-		Passed parameter 5 = forcesuccessflag
+	- Capabilities 
+		* Passed parameter 4 = DMG filename
+		* Passed parameter 5 = forcesuccessflag
 			When this parameter is used by supplying "YES" in uppercase without quotes will output the PKG exit code to the log and pass an exit of 0 to the policy. This is useful in certain circumstances if you want to run an a PKG (eg and PKG uninstaller) then an installer PKG. You might want to ignore the first uninstaller PKG's exit code.
-	Improvements -
+	- Improvements
 		Passed parameters passed into the logs allowing easier troubleshooting.
 		PKG exit codes are pass into the logs seperately from script exit code.
 
