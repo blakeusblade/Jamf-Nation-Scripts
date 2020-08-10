@@ -35,8 +35,9 @@
 	- Improvments
 		* Elements of the script made into functions decreasing script length and complexity
 		* Additional logging to better aid in troubleshooting
+		* Adding capability to have spaces in the DMG and PKG filenames
 
 	Uploaded to jamf nation by myself
 	https://www.jamf.com/jamf-nation/third-party-products/files/1048/installpkgsfromdmg
 
-This Jamf pro scripts is constantly in revision for improvements.
+This Jamf pro script is constantly in revision for improvements.
