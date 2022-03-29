@@ -40,4 +40,6 @@
 	Uploaded to jamf nation by myself
 	https://www.jamf.com/jamf-nation/third-party-products/files/1048/installpkgsfromdmg
 
+It should be noted that the default behaviour is to use the jamf binary (ie paramater 6 NOT in use) which copies the PKG to be installed into the /Library/Application Support/JAMF/Downloads directory and runs the PKG from there. When using paramater 6 (ie supplying "YES" without quotes to paramater 6) the installer binary is used and the PKG installation runs from the mounted DMG.
+
 This Jamf pro script is constantly in revision for improvements.
