@@ -67,6 +67,12 @@ It should be noted that the default behaviour is to use the jamf binary (ie para
 			Installing Package "Apple_xCode_26.2_for_macOS_15.6+.pkg" from mount path "/Volumnes/Apple_xCode_26.2_for_macOS_15.6+
 			Install string...: installer -pkg /Volumnes/Apple_xCode_26.2_for_macOS_15.6+/Apple_xCode_26.2_for_macOS_15.6+.pkg -target / 
 
+			PKG exit code was: 1
+			Forced Exit code 0 was passed to JSS
+
+			PKG exit code was: 0
+			Exit code 0 was passed to JSS
+
 			Installing packages, Only failures will be logged..."
 			Install string...: installer -pkg /Volumnes/DMGVolumeName/LotsOfPackages.pkgs -target /
 
@@ -81,6 +87,14 @@ It should be noted that the default behaviour is to use the jamf binary (ie para
 			
 		  	Installing packages... Only failures will be logged...
 		  	Install string...: installer -pkg /Volumnes/DMGVolumeName/LotsOfPackages.pkgs -target /
+		  	
+		  	Apple_Numbers_3.2.1.pkg FAILED
+		  	Number of PKG failures : 1
+		  	Forced Exit code 0 was passed to JSS
+
+		  	Number of PKG failures : 0
+		  	Exit code 0 was passed to JSS
+			
 			
 - Improvments
 	* Elements of the script made into functions decreasing script length and complexity
