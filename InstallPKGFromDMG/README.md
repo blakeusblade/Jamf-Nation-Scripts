@@ -46,10 +46,41 @@ It should be noted that the default behaviour is to use the jamf binary (ie para
 * This update is to address default behaviour and refined code to allow greater flexibilty.
 	- Capabilities
 		* Passed parameter 4 = Mandatory - Fullpath to DMG or DMG Filename including extensions suffix (no \ character escape for spaces in path or filenames)
-  			- Previously one could only define a DMG filename which the script would expect the DMG file to be cached to the following path "/Library/Application Support/JAMF/Waiting\ Room" from a jamf policy. This has been updated to allow greater flexibility in allowing a full path to any DMG file on disk. If providing the paramater a simple DMG filename, the script expects it to be in the mentioned directory mentioned. If providing a full path to a DMG, the script will use that DMG defined. It will outline if using the default path or a custom path in the logs. Additionally, any DMG defined inside as temp directories i.e /private/tmp , /private/var/tmp , /tmp/ , or the above mentioned JAMF/Waiting\ Room directory, the script will remove the DMG file from the disk upon unmounting. Any other directory the DMG file will NOT be removed from the disk. This allows a DMG to remain on disk if needed byu simply defining a custom path to a DMG. Existing policies passing this parameter won't be affected if upgrading script syntax.
+  			- Previously one could only define a DMG filename which the script would expect the DMG file to be cached to the following path "/Library/Application Support/JAMF/Waiting\ Room" from a jamf policy. This has been updated to allow greater flexibility in allowing a full path to any DMG file on disk. If providing the paramater a simple DMG filename, the script expects it to be in the JAMF/Waiting\ Room directory. If providing a full path to a DMG, the script will use that DMG defined with the custom path. It will outline if using the default path or a custom path in the logs. Additionally, any DMG defined inside as temp directories i.e /private/tmp , /private/var/tmp , /tmp/ , or the above mentioned JAMF/Waiting\ Room directory, the script will remove the DMG file from the disk upon unmounting. Any other directory the DMG file will NOT be removed from the disk. This allows a DMG to remain on disk if needed byu simply defining a custom path to a DMG. Existing policies passing this parameter won't be affected if upgrading script syntax.
+       Log output examples
+	   
+       		Variable "dmgName" value is set to: "Apple_xCode_26.2_for_macOS_15.6+.dmg"
+			Verifying default "DMG path"...: valid
+
+       		Variable "dmgName" value is set to: "/tmp/Apple_xCode_26.2_for_macOS_15.6+.dmg"
+			Verifying custom "DMG path"...: valid
+
+       		Variable "dmgName" value is set to: "/private/var/Apple_xCode_26.2_for_macOS_15.6+.dmg"
+			Verifying custom "DMG path"...: invalid
+			
 		* Passed parameter 6 = Optional useinstallerapp, eg YES (case sensitive) - deprecated/removed/unassigned
   			- This parameters forced using the installer binary to perform installation. This is now the scripts default behaviour. This parameter has been removed. Existing policies passing this parameter won't be affected if upgrading script syntax.
+       Log output examples
+
+			"Installing Package "Apple_xCode_26.2_for_macOS_15.6+.pkg" from mount path "/Volumnes/Apple_xCode_26.2_for_macOS_15.6+"
+			"Install string...: installer -pkg /Volumnes/Apple_xCode_26.2_for_macOS_15.6+/Apple_xCode_26.2_for_macOS_15.6+.pkg -target /"  
+
+			"Installing packages, Only failures will be logged..."
+			"Install string...: installer -pkg /Volumnes/DMGVolumeName/LotsOfPackages.pkgs -target /"
+
 		* Passed parameter 9 = Optional MultiPKGs, eg YES (case sensitive) - deprecated/removed/unassigned
   			- This parameter forced the script to loop through all PKG's within the DMG, installing all of them and logging the filename of failed PKGs. The number of failures would be passed to the JSS/Jamf Pro. This is now default behaviour. The script will automatically scan the mounted DMG and detect if mutiple PKGs are present. If so perform the same behaviour. Additionally, functionality has been included to allow certain PKG's to be installed and not others. ie. Parent.pkg installation calls child.pkg resulting in a successful installation. In certain cases (vendor pkg installers) if child.pkg is called, it might fail because its not being called by its parent.pkg. To acheive this with the script, before creating your DMG, in terminal use chflags -hidden /path/some/child.pkg. This will flag within the DMG the child.pkg to be hidden and so the script will not run child.pkg independently. It will only be called by the parent.pkg calling it. Existing policies passing this parameter won't be affected if upgrading script syntax.
+		Log output examples
+
+			"ERROR - Number of packages to be installed...: Greater than 1 and applyChoiceChangesXMLFile is declared"
+			
+			"Number of packages to be installed...: 50"
+			
+			"Installing packages... Only failures will be logged..."
+		  	"Install string...: installer -pkg /Volumnes/DMGVolumeName/LotsOfPackages.pkgs -target /"
+			
+- Improvments
+		* Elements of the script made into functions decreasing script length and complexity
+		* Additional logging to better aid in troubleshooting
 
 This Jamf pro script is constantly in revision for improvements.
