@@ -83,7 +83,7 @@ It should be noted that the default behaviour is to use the jamf binary (ie para
 		  	Install string...: installer -pkg /Volumnes/DMGVolumeName/LotsOfPackages.pkgs -target /
 			
 - Improvments
-		* Elements of the script made into functions decreasing script length and complexity
-		* Additional logging to better aid in troubleshooting
+	* Elements of the script made into functions decreasing script length and complexity
+	* Additional logging to better aid in troubleshooting
 
 This Jamf pro script is constantly in revision for improvements.
