@@ -18,4 +18,8 @@
    		* Passed parameter 5 = removeEAs
 			- When this parameter is used by supplying "YES" in uppercase without quotes will recursively remove extended attributes from the .app once installed 
 
+Jamf policy log output below
+
+<img width="732" height="641" alt="Screenshot 2026-02-11 at 12 43 52 pm" src="https://github.com/user-attachments/assets/b5b4257f-571d-4e43-bb7c-b4dbca755d6f" />
+
 This Jamf pro script is constantly in revision for improvements.
